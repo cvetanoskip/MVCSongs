@@ -1,0 +1,105 @@
+﻿@* @model MVCSongs.Models.SongArtist
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>SongArtist</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Song)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Song.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Artist)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Artist.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+ *@
+ @model MVCSongs.Models.SongArtist
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!-- Custom Styles -->
+<style>
+    body {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+        margin-top: 30px;
+        font-size: 2.5em;
+    }
+    .container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 30px auto;
+        max-width: 900px;
+    }
+    dl.row {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    dt.col-sm-2 {
+        font-weight: bold;
+        color: #555;
+    }
+    dd.col-sm-10 {
+        margin-bottom: 10px;
+        color: #666;
+    }
+    .action-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .action-links a {
+        color: #007bff;
+        text-decoration: none;
+        margin: 0 10px;
+    }
+    .action-links a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="container">
+    <h1>Details</h1>
+
+    <div>
+        <h4>Song Artist</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Song)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Song.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Artist)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Artist.Id)
+            </dd>
+        </dl

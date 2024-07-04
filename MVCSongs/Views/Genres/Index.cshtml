@@ -1,0 +1,160 @@
+﻿@* @model IEnumerable<MVCSongs.Models.Genre>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Genres</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GenreName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GenreName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+ *@
+ @model IEnumerable<MVCSongs.Models.Genre>
+
+@{
+    ViewData["Title"] = "Genres";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - MVCSongs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #495057;
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+
+        .btn-create {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+            .btn-create:hover {
+                background-color: #218838;
+                border-color: #1e7e34;
+            }
+
+        .table {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+        }
+
+            .table th, .table td {
+                border-top: 1px solid #dee2e6;
+            }
+
+        .table-dark th {
+            background-color: #343a40;
+            border-color: #454d55;
+            color: #fff;
+        }
+
+        .btn-actions {
+            font-size: 0.9rem;
+        }
+
+            .btn-actions .btn {
+                margin-right: 5px;
+            }
+
+        .delete-btn {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+            .delete-btn:hover {
+                background-color: #c82333;
+                border-color: #bd2130;
+            }
+    </style>
+</head>
+<body>
+
+    <h1>Genres</h1>
+
+    <div class="container">
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <p class="text-right">
+                <a asp-action="Create" class="btn btn-create text-white">Create New</a>
+            </p>
+        }
+       
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Genre Name</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.GenreName)</td>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <td class="btn-actions">
+                                <div class="btn-group" role="group" aria-label="Actions">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Edit</a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm delete-btn text-white">Delete</a>
+                                </div>
+                            </td>
+                        }
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    
+
+</body>
+</html>

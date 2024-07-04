@@ -1,0 +1,183 @@
+﻿@* @model MVCSongs.ViewModels.CreateEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Songs</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data"  asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Song.Id" />
+            <div class="form-group">
+                <label asp-for="Song.Title" class="control-label"></label>
+                <input asp-for="Song.Title" class="form-control" />
+                <span asp-validation-for="Song.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Song.Year" class="control-label"></label>
+                <input asp-for="Song.Year" class="form-control" />
+                <span asp-validation-for="Song.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Song.Listeners" class="control-label"></label>
+                <input asp-for="Song.Listeners" class="form-control" />
+                <span asp-validation-for="Song.Listeners" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Song.Description" class="control-label"></label>
+                <input asp-for="Song.Description" class="form-control" />
+                <span asp-validation-for="Song.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Song.AlbumCover" class="control-label"></label>
+                <div class="mb-2">
+                    <label for="File" class="form-label"> Select a file to upload </label>
+                    <input id="File" name="File" type="file" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Song.SongUrl" class="control-label"></label>
+                <input asp-for="Song.SongUrl" class="form-control" />
+                <span asp-validation-for="Song.SongUrl" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+ *@
+ @model MVCSongs.ViewModels.CreateEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MVCSongs</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        body {
+            background-color: #fffaf0; /* Antique white background */
+            font-family: 'Times New Roman', serif;
+            color: #333; /* Dark text */
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            color: #8b4513; /* Saddle brown heading color */
+            margin-top: 20px;
+        }
+
+        .form-control {
+            background-color: #fff; /* White form background */
+            color: #555; /* Dark gray text for inputs */
+            border-color: #d3d3d3; /* Light gray border color */
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #8b4513; /* Saddle brown label color */
+            font-family: 'Garamond', serif;
+        }
+
+        .btn-primary {
+            background-color: #8b4513; /* Dark saddle brown button color */
+            border-color: #8b4513;
+        }
+
+            .btn-primary:hover {
+                background-color: #cd853f; /* Peru on hover */
+                border-color: #cd853f;
+            }
+
+        .footer {
+            background-color: #f8f9fa; /* Light footer background */
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            color: #666; /* Footer text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Song</h1>
+        <hr />
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form enctype="multipart/form-data" asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Song.Id" />
+                    <div class="form-group">
+                        <label asp-for="Song.Title" class="control-label">Title</label>
+                        <input asp-for="Song.Title" class="form-control" placeholder="Enter song title" />
+                        <span asp-validation-for="Song.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Song.Year" class="control-label">Year</label>
+                        <input asp-for="Song.Year" class="form-control" placeholder="Enter release year" />
+                        <span asp-validation-for="Song.Year" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="Song.Description" class="control-label">Description</label>
+                        <textarea asp-for="Song.Description" class="form-control" rows="3" placeholder="Enter song description"></textarea>
+                        <span asp-validation-for="Song.Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Song.AlbumCover" class="control-label">Album Cover</label>
+                        <div class="mb-2">
+                            <label for="File" class="form-label"> Select a file to upload </label>
+                            <input id="File" name="File" type="file" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Song.SongUrl" class="control-label">Song URL</label>
+                        <input asp-for="Song.SongUrl" class="form-control" placeholder="Enter YouTube URL or audio link" />
+                        <span asp-validation-for="Song.SongUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+
+    
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Additional scripts or plugins as needed -->
+    
+</body>
+</html>

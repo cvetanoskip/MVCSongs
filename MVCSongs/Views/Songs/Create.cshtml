@@ -1,0 +1,236 @@
+﻿@* @model MVCSongs.ViewModels.CreateEditViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Songs</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Song.Title" class="control-label"></label>
+                <input asp-for="Song.Title" class="form-control" />
+                <span asp-validation-for="Song.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Song.Year" class="control-label"></label>
+                <input asp-for="Song.Year" class="form-control" />
+                <span asp-validation-for="Song.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Song.Listeners" class="control-label"></label>
+                <input asp-for="Song.Listeners" class="form-control" />
+                <span asp-validation-for="Song.Listeners" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Song.Description" class="control-label"></label>
+                <input asp-for="Song.Description" class="form-control" />
+                <span asp-validation-for="Song.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Song.SongUrl" class="control-label"></label>
+                <input asp-for="Song.SongUrl" class="form-control" />
+                <span asp-validation-for="Song.SongUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Artists</label>
+                <select asp-for="SelectedArtists" class="form-control js-example-basic-multiple" asp-items="Model.Artists"> </select>
+                <span asp-validation-for="SelectedArtists" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Genres</label>
+                <select asp-for="SelectedGenres" class="form-control js-example-basic-multiple" asp-items="Model.Genres"> </select>
+                <span asp-validation-for="SelectedGenres" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label for="File" class="form-label"> Select a file to upload </label>
+                <input id="File" name="File" type="file" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+ *@
+@model MVCSongs.ViewModels.CreateEditViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MVCSongs</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!-- Additional CSS for musical theme -->
+    <link rel="stylesheet" href="~/css/musical-theme.css" asp-append-version="true" />
+    <!-- Include any custom fonts or icons here -->
+    <style>
+        /* Custom Styles for Futuristic Look */
+        body {
+            background-color: #e5c39a; /* Brownish skin tone background */
+            color: #333; /* Dark text color */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h1 {
+            color: #6b4226; /* Dark brown for headers */
+            text-align: center;
+            margin-top: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .form-control {
+            background-color: #fff; /* White background for form controls */
+            border: 1px solid #6b4226; /* Dark brown border */
+            color: #333; /* Dark text color */
+        }
+
+        .btn {
+            background-color: #6b4226; /* Dark brown button background */
+            border: none;
+            color: #fff; /* White button text */
+            transition: background-color 0.3s ease;
+        }
+
+            .btn:hover {
+                background-color: #4d311e; /* Darker shade on hover */
+            }
+
+        .table {
+            background-color: #fff; /* White background for table */
+            color: #333; /* Dark text color */
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+            .table th, .table td {
+                border: none;
+                padding: 12px;
+                text-align: center;
+            }
+
+            .table th {
+                background-color: #6b4226; /* Dark brown header */
+                color: #fff; /* White text */
+            }
+
+            .table td {
+                background-color: #f0f0f0; /* Light gray for table rows */
+            }
+
+            .table tr:hover {
+                background-color: #e0e0e0; /* Even lighter shade on hover */
+            }
+
+        a {
+            color: #6b4226; /* Dark brown links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            a:hover {
+                color: #4d311e; /* Darker shade on hover */
+            }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+            .filter-container input[type="text"] {
+                margin-right: 10px;
+                border-radius: 5px;
+                padding: 8px;
+            }
+
+        .container {
+            max-width: 800px; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Create New Song</h1>
+        <hr />
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form enctype="multipart/form-data" asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Song.Title" class="control-label">Title</label>
+                        <input asp-for="Song.Title" class="form-control" placeholder="Enter song title" />
+                        <span asp-validation-for="Song.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Song.Year" class="control-label">Year</label>
+                        <input asp-for="Song.Year" class="form-control" placeholder="Enter release year" />
+                        <span asp-validation-for="Song.Year" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="Song.Description" class="control-label">Description</label>
+                        <textarea asp-for="Song.Description" class="form-control" rows="3" placeholder="Enter song description"></textarea>
+                        <span asp-validation-for="Song.Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Song.SongUrl" class="control-label">Song URL</label>
+                        <input asp-for="Song.SongUrl" class="form-control" placeholder="Enter YouTube URL or audio link" />
+                        <span asp-validation-for="Song.SongUrl" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Artists</label>
+                        <select asp-for="SelectedArtists" class="form-control select2" asp-items="Model.Artists" multiple>
+                        </select>
+                        <span asp-validation-for="SelectedArtists" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Genres</label>
+                        <select asp-for="SelectedGenres" class="form-control select2" asp-items="Model.Genres" multiple>
+                        </select>
+                        <span asp-validation-for="SelectedGenres" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="File" class="form-label">Select Album Cover</label>
+                        <input id="File" name="File" type="file" class="form-control" />
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Additional scripts for select2 or other plugins -->
+@*    @await RenderSectionAsync("Scripts", required: false)
+ *@</body>
+</html>

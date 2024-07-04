@@ -1,0 +1,129 @@
+﻿@* @model MVCSongs.Models.Genre
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Genre</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GenreName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GenreName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+ *@
+ @model MVCSongs.Models.Genre
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - MVCSongs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #495057;
+        }
+
+        h1 {
+            color: #007bff;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #ffffff;
+            font-size: 1.5rem;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .dl-horizontal dt {
+            width: 160px;
+            font-weight: bold;
+        }
+
+        .dl-horizontal dd {
+            margin-left: 180px;
+            margin-bottom: 10px;
+        }
+
+        .btn-edit {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #ffffff;
+        }
+
+            .btn-edit:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+                color: #ffffff;
+            }
+    </style>
+</head>
+<body>
+
+    <h1>Genre Details</h1>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Genre Information
+            </div>
+            <div class="card-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GenreName)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.GenreName)
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-edit">Edit Genre</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+
+    
+
+</body>
+</html>

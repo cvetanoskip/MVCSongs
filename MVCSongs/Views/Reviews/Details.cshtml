@@ -1,0 +1,90 @@
+﻿@model MVCSongs.Models.Review
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<style>
+    body {
+        font-family: 'Garamond', serif;
+        background-color: #f5f5f5; /* Light gray */
+        color: #333; /* Dark gray */
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        color: #4c3c26; /* Dark brown */
+        text-align: center;
+        font-size: 3em;
+        margin-top: 30px;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+
+    .col-sm-2 {
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #4c3c26; /* Dark brown */
+        border-color: #4c3c26; /* Dark brown */
+    }
+
+        .btn-primary:hover {
+            background-color: #593e2c; /* Darker brown */
+            border-color: #593e2c; /* Darker brown */
+        }
+
+    .btn-danger {
+        background-color: #d9534f; /* Red */
+        border-color: #d9534f; /* Red */
+    }
+
+        .btn-danger:hover {
+            background-color: #c9302c; /* Darker red */
+            border-color: #c9302c; /* Darker red */
+        }
+</style>
+
+<div>
+    <h4>Review</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SongId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SongId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AppUser)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AppUser)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
